@@ -2,14 +2,12 @@
 #' Classification of phasic and sustained freezers
 #'
 #' @param data dataframe containing freezing values of bins 13 - 24
-#'
 #' @param sex "female" or "male" specifying the sex
 #' @param MR 1 or 2 specifying the Memory Retrieval Session 1 or 2
-#' @param ... further parameters
-#' @export predict.phenotype
+#' @export classify.freezer
 #' @export
 
-predict.phenotype <- function(data, ..., sex, MR){
+classify.freezer <- function(data, sex, MR){
 
   # LOAD ML MODELS --------------------------
   #Load ML Models - MR1 phenotype classification
