@@ -10,6 +10,10 @@ First, phenoFreeze performs regression analysis, obtaining coefficients of a log
 ## Installation
 This package can be directly installed from github using devtools:
 ```
+if(!require(devtools)){
+    install.packages("devtools")
+    library(devtools)
+}
 devtools::install_github("johannesmiedema/phenoFreeze")
 ```
 
