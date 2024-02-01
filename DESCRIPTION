@@ -1,4 +1,4 @@
-Package: FreezerClassifier
+Package: phenoFreeze
 Title: Machine-learning-based phenotyping of inbred mice into sustained
     and phasic freezers
 Version: 0.0.0.9000
