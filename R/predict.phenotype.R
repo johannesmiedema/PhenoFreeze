@@ -6,6 +6,7 @@
 #' @param sex "female" or "male" specifying the sex
 #' @param MR 1 or 2 specifying the Memory Retrieval Session 1 or 2
 #'
+#' @rdname predict.phenotype
 #' @export predict.phenotype
 #' @export
 
