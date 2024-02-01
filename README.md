@@ -7,19 +7,19 @@ phenoFreeze is an R package which can be used to predict behavioral endophenotyp
 
 First, phenoFreeze performs regression analysis, obtaining coefficients of a loglinear model for each individual freezing curve. These model coefficients are then used by sex-specifc machine-learning models to classify animals into sustained and phasic freezers. 
 
-# Installation
+## Installation
 This package can be directly installed from github using devtools:
 ```
 devtools::install_github("johannesmiedema/phenoFreeze")
 ```
 
-# Usage 
+## Usage 
 The main utility of this package is the function classify_freezer(). To use this function for classification, a dataset of freezing values during Memory Retrieval (MR) sessions is needed. Using the described phenotyping pipeline in this particular experimental setup[1], the data table should contain only the time bins during tone presentation (bins 13 - 24). The classifier can be used for female MR1 classification as:
 ```
 results <- classify_freezer(data, sex = "female", MR = 1)
 ```
 The function returns a vector containing the classified phenotypes "sustained" and "phasic". 
-# Project status
+## Project status
 This package is currently under developement. 
 
 # References 
