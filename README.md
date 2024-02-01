@@ -22,5 +22,5 @@ The function returns a vector containing the classified phenotypes "sustained" a
 ## Project status
 This package is currently under developement. 
 
-# References 
+## References 
 Irina Kovlyagina, Anna Wierczeiko, Hristo Todorov, Eric Jacobi, Margarita Tevosian, Jakob von Engelhardt, Susanne Gerber*, Beat Lutz*. Freezing responses during prolonged threat memory retrieval reflect trait-like anxiety endophenotypes in female and male inbred mice. bioRxiv, doi: https://doi.org/10.1101/2023.11.22.568236 (2023).
