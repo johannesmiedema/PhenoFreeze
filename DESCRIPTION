@@ -1,9 +1,9 @@
 Package: FreezerClassifier
-Title: What the Package Does (One Line, Title Case)
+Title: Machine-learning-based phenotyping of inbred mice into sustained and phasic freezers
 Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+Authors@R: c(
+    person("Johannes", "Miedema", email = "jmiedema@students.uni-mainz.de", role = c("cre","aut")),
+    person("Hristo", "Todorov", email = "hristo.todorov@uni-mainz.d", role = "aut"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
