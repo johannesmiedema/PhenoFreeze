@@ -40,7 +40,7 @@ predict.phenotype <- function(data, sex, MR=1){
   #Prediction using loaded model
 
   #Predict MR1 Phenotype of females
-  if (sex == "female" & MR2_prediction == F){
+  if (sex == "female" & MR == 1){
     message("Predicting female MR1 Phenotypes using MR1 freezing data")
     phenotypes <- stats::predict(f.MR1.model, newdata = params)
     #Transform values as the model is a glm model
@@ -48,7 +48,7 @@ predict.phenotype <- function(data, sex, MR=1){
     phenotypes <- factor(phenotypes, levels = c("sustained", "phasic"))
   }
   #Predict MR2 Phenotypes of females
-  if (sex == "female" & MR2_prediction == T){
+  if (sex == "female" & MR == 2){
     message("Predicting female MR2 Phenotypes including shifters using MR1 freezing data")
     phenotypes <- stats::predict(f.MR2pred.shifter.model, newdata = params)
     #Transform values as the model is a glm model
@@ -56,12 +56,12 @@ predict.phenotype <- function(data, sex, MR=1){
     phenotypes <- factor(phenotypes, levels = c("sustained", "phasic"))
   }
   #Predict MR1 Phenotype of males
-  if (sex == "male" & MR2_prediction == F){
+  if (sex == "male" & MR == 1){
     message("Predicting male MR1 Phenotypes using MR1 freezing data")
     phenotypes <- stats::predict(m.MR1.model, newdata = params)
   }
   #Predict MR2 Phenotypes of males
-  if (sex == "male" & MR2_prediction == T ){
+  if (sex == "male" & MR == 2 ){
     message("Predicting male MR2 Phenotypes including shifters using MR1 freezing data")
     phenotypes <- stats::predict(m.MR2pred.shifter.model, newdata = params)
   }
