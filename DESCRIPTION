@@ -7,7 +7,7 @@ Authors@R: c(
     person("Hristo", "Todorov", , "hristo.todorov@uni-mainz.d", role = "aut")
   )
 Description: What the package does (one paragraph).
-License: MIT + file LICENSE
+License: GPL (>= 3)
 Depends: 
     R (>= 2.10)
 Imports:
