@@ -21,13 +21,13 @@ predict.phenotype <- function(data, sex, MR=1){
   params <- data.frame()
 
   #Fit regression model for each animal
-  for (i in 1:nrow(freezing_values)){
+  for (i in 1:nrow(data)){
     #transpose x and y
-    y <- t(freezing_values[i,])
+    y <- t(data[i,])
     #impute +1 if y is zero to allow log operation
     if (0 %in% y){y<-y+1}
     #fit model
-    mod.loglinear <- lm(log(y)~bins)
+    mod.loglinear <- stats::lm(log(y)~bins)
     #obtain beta coefficient
     beta[i] <- mod.loglinear$coefficients[2]
     #obtain intercepts
