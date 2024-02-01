@@ -1,4 +1,4 @@
-![cmd](https://github.com/johannesmiedema/FreezerClassifier/actions/workflows/R-CMD-check.yaml/badge.svg) 
+![cmd](https://github.com/johannesmiedema/FreezerClassifier/actions/workflows/R-CMD-check.yaml/badge.svg) ![R](https://github.com/johannesmiedema/FreezerClassifier/actions/workflows/r.yml/badge.svg) 
 
 # phenoFreeze
 phenoFreeze is an R package which can be used to predict behavioral endophenotypes after auditory aversive conditioning (AAC)[1]. Designed for the classification using the described experimental setup[1], phenoFreeze can classify animals into sustained and phasic freezers using sex-specific machine-learning models. 
