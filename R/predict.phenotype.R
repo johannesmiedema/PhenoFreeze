@@ -5,12 +5,12 @@
 #'
 #' @param sex "female" or "male" specifying the sex
 #' @param MR 1 or 2 specifying the Memory Retrieval Session 1 or 2
-#'
+#' @param ... further parameters
 #' @rdname predict.phenotype
 #' @export predict.phenotype
 #' @export
 
-predict.phenotype <- function(data, sex, MR=1){
+predict.phenotype <- function(data, sex, MR, ...){
 
   # LOAD ML MODELS --------------------------
   #Load ML Models - MR1 phenotype classification

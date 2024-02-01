@@ -4,7 +4,7 @@
 \alias{predict.phenotype}
 \title{Classification of phasic and sustained freezers}
 \usage{
-\method{predict}{phenotype}(data, sex, MR = 1)
+\method{predict}{phenotype}(data, sex, MR, ...)
 }
 \arguments{
 \item{data}{dataframe containing freezing values of bins 13 - 24}
@@ -12,6 +12,8 @@
 \item{sex}{"female" or "male" specifying the sex}
 
 \item{MR}{1 or 2 specifying the Memory Retrieval Session 1 or 2}
+
+\item{...}{further parameters}
 }
 \description{
 Classification of phasic and sustained freezers
