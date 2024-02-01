@@ -1,1 +1,1 @@
-https://github.com/johannesmiedema/FreezerClassifier/actions/workflows/R-CMD-check.yaml/badge.svg
+.github/workflows/R-CMD-check.yaml
