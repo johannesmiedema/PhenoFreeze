@@ -6,7 +6,7 @@ Authors@R: c(
     person("Johannes", "Miedema", , "jmiedema@students.uni-mainz.de", role = c("cre", "aut")),
     person("Hristo", "Todorov", , "hristo.todorov@uni-mainz.d", role = "aut")
   )
-Description: What the package does (one paragraph).
+Description: Classification of behavioral endophenotypes with sex-specific machine learning models.
 License: GPL (>= 3)
 Depends: 
     R (>= 2.10)
