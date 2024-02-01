@@ -1,6 +1,7 @@
 
 
-
+#' @export predict.phenotype
+#' @export
 
 predict.phenotype <- function(data, sex, MR=1){
 
