@@ -1,7 +1,7 @@
 Package: phenoFreeze
 Title: Machine-learning-based phenotyping of inbred mice into sustained
     and phasic freezers
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: c(
     person("Johannes", "Miedema", , "jmiedema@students.uni-mainz.de", role = c("cre", "aut")),
     person("Hristo", "Todorov", , "hristo.todorov@uni-mainz.d", role = "aut")
