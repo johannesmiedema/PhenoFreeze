@@ -4,10 +4,12 @@
 \alias{classify_freezer}
 \title{Classification of phasic and sustained freezers}
 \usage{
-classify_freezer(data, sex, MR)
+classify_freezer(data_MR1, data_MR2, sex, MR)
 }
 \arguments{
-\item{data}{dataframe containing freezing values of bins 13 - 24 as a character}
+\item{data_MR1}{dataframe containing freezing values MR1 of bins 13 - 24 as a character}
+
+\item{data_MR2}{dataframe containing freezing values MR2 of bins 13 - 24 as a character}
 
 \item{sex}{"female" or "male" specifying the sex}
 
