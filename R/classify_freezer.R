@@ -1,7 +1,7 @@
 
 #' Classification of phasic and sustained freezers
 #'
-#' @param data dataframe containing freezing values of bins 13 - 24
+#' @param data dataframe containing freezing values of bins 13 - 24 as a character
 #' @param sex "female" or "male" specifying the sex
 #' @param MR 1 or 2 specifying the Memory Retrieval Session 1 or 2
 #' @import randomForest
@@ -15,22 +15,26 @@ classify_freezer <- function(data, sex, MR){
 
   #Validate Input data
   if (!is.data.frame(data)){
-    stop("data has to be an object of type data.frame")
+    stop("Data has to be an object of type data.frame")
   }
-  if (ncol(data) != 12){
-    if (colnames(data) != c(13:24)){
-      stop("data must consist of 12 columns or should contain labelled time bins 13 to 24")
-    }
+
+  if (ncol(data) < 12){
+    stop("Data must consist of at least 12 columns of tone presentation")
+  }
+
+  if ((all(as.character(c(13:24)) %in% colnames(data))) == FALSE){
+    stop("Data must have column names 13 to 24 of type character")
   }
 
   #Transform input data if it does not already consist of 12 time bins
-  if (ncol(data) != 12){
-
+  #Extract column names 13 to 24
+  if (ncol(data) > 12){
+    data <- base::subset(data, select = as.character(c(13:24)))
   }
 
   #Validate sex paramter
   if (sex != "female" & sex != "male"){
-    stop("sex must be a string of type 'female' or 'male'")
+    stop("Sex must be a string of type 'female' or 'male'")
   }
 
   #Validate Memory Retrieval parameter
@@ -97,7 +101,7 @@ classify_freezer <- function(data, sex, MR){
     phenotypes <- stats::predict(male_MR2, newdata = params)
   }
 
-  #Return classified animals
+  #Return classified animals - prompt success message on console
   message("Classified  ", length(phenotypes), " animals. ")
   return(phenotypes)
 }

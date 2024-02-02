@@ -7,7 +7,7 @@
 classify_freezer(data, sex, MR)
 }
 \arguments{
-\item{data}{dataframe containing freezing values of bins 13 - 24}
+\item{data}{dataframe containing freezing values of bins 13 - 24 as a character}
 
 \item{sex}{"female" or "male" specifying the sex}
 
