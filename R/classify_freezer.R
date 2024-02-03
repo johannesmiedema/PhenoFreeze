@@ -109,7 +109,7 @@ classify_freezer <- function(data_MR1, data_MR2, sex, MR){
   }
 
   #Initialize data frame for regression parameters
-  params_MR1 <- data.frame(freeze=freeze_MR1,beta=beta_MR1, int=int_MR1)
+  params_MR1 <- data.frame(freeze_MR1=freeze_MR1,beta_MR1=beta_MR1, int_MR1=int_MR1)
 
   #If MR = 1 specified: Return classified animals - prompt success message on console
   if (MR == 1){
@@ -166,7 +166,7 @@ classify_freezer <- function(data_MR1, data_MR2, sex, MR){
     }
 
     #Initialize data frame for regression parameters
-    params_MR2 <- data.frame(freeze=freeze_MR2,beta=beta_MR2, int=int_MR2)
+    params_MR2 <- data.frame(freeze_MR2=freeze_MR2,beta_MR2=beta_MR2, int_MR2=int_MR2)
 
     #Merge MR1 and MR2 regression parameters for MR2 classification
     params_merged <- base::cbind(params_MR1, params_MR2)
