@@ -18,11 +18,16 @@ devtools::install_github("johannesmiedema/phenoFreeze")
 ```
 
 ## Usage 
-The main utility of this package is the function classify_freezer(). To use this function for classification, a dataset of freezing values during Memory Retrieval (MR) sessions is needed. Using the described phenotyping pipeline in this particular experimental setup[1], the data table should contain only the time bins during tone presentation (bins 13 - 24). The classifier can be used for female MR1 classification as:
+The main utility of this package is the function classify_freezer(). To use this function for classification, a dataset of freezing values during Memory Retrieval (MR) sessions is needed. Using the described phenotyping pipeline in this particular experimental setup[1], the data table should contain the time bins during tone presentation (bins 13 - 24). The columns should have the proper column names accordingly (e.g. "13", "14", ...). The classifier can then  be used for female MR1 classification:
 ```
-results <- classify_freezer(data, sex = "female", MR = 1)
+results <- classify_freezer(data_MR1 = dataset_MR1, sex = "female", MR = 1)
 ```
 The function returns a vector containing the classified phenotypes "sustained" and "phasic". 
+
+phenoFreeze is also able to predict MR2 phenotypes including shifters, which are animals who shifted their phenotype from MR1 to MR2. However, to classify MR2 phenotypes, classify_freezer() requires both MR1 and MR2 freezing datasets. It is necessary that both datasets represent each animals freezing values in the same order, please check before using the MR2 classification. Then, MR2 classification can be done:
+```
+results <- classify_freezer(data_MR1 = dataset_MR1, data_MR2 = dataset_MR2, sex = "female", MR = 1)
+```
 ## Project status
 This package is currently under developement. 
 
