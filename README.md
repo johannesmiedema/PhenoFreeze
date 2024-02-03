@@ -27,6 +27,7 @@ The function returns a vector containing the classified phenotypes "sustained" a
 phenoFreeze is also able to predict MR2 phenotypes including shifters, which are animals who shifted their phenotype from MR1 to MR2. However, to classify MR2 phenotypes, classify_freezer() requires both MR1 and MR2 freezing datasets. It is necessary that both datasets represent each animals freezing values in the same order, please check before using the MR2 classification. Then, MR2 classification can be done:
 ```
 results <- classify_freezer(data_MR1 = dataset_MR1, data_MR2 = dataset_MR2, sex = "female", MR = 1)
+
 ```
 ## Project status
 This package is currently under developement. 
