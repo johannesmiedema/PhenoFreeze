@@ -4,7 +4,7 @@
 \alias{classify_freezer}
 \title{Classification of phasic and sustained freezers}
 \usage{
-classify_freezer(data_MR1, data_MR2, sex, MR)
+classify_freezer(data_MR1, data_MR2, sex, MR, shifter)
 }
 \arguments{
 \item{data_MR1}{dataframe containing freezing values MR1 of bins 13 - 24 as a character}
@@ -14,6 +14,8 @@ classify_freezer(data_MR1, data_MR2, sex, MR)
 \item{sex}{"female" or "male" specifying the sex}
 
 \item{MR}{1 or 2 specifying the Memory Retrieval Session 1 or 2}
+
+\item{shifter}{boolean argument specifying if shifters should be included in prediction}
 }
 \description{
 Classification of phasic and sustained freezers
