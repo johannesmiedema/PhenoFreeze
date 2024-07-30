@@ -12,6 +12,7 @@
 #' @export
 
 classify_freezer <- function(data_MR1, data_MR2, sex, MR, shifter){
+  message("implement update using average of only sustained phase")
 
   #####################################
   #-------PARAMETER VALIDATION--------#
@@ -89,8 +90,8 @@ classify_freezer <- function(data_MR1, data_MR2, sex, MR, shifter){
     bins <- 1:12
     beta_MR1 <- 0
     int_MR1 <- 0
-    #Calculate average freezing of each animal
-    freeze_MR1 <- rowMeans(data_MR1)
+    #Calculate average freezing of each animal during sustained phase
+    freeze_MR1 <- rowMeans(data_MR1[,6:12])
 
     #Fit regression model for each animal
     for (i in 1:nrow(data_MR1)){
@@ -146,8 +147,8 @@ classify_freezer <- function(data_MR1, data_MR2, sex, MR, shifter){
     bins <- 1:12
     beta_MR2 <- 0
     int_MR2 <- 0
-    #Calculate average freezing of each animal
-    freeze_MR2 <- rowMeans(data_MR2)
+    #Calculate average freezing of each animal during sustained phasel
+    freeze_MR2 <- rowMeans(data_MR2[,6:12])
 
     #Fit regression model for each animal
     for (i in 1:nrow(data_MR2)){
