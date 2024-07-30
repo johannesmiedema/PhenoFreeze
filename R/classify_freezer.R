@@ -12,8 +12,6 @@
 #' @export
 
 classify_freezer <- function(data_MR1, data_MR2, sex, MR, shifter){
-  message("implement update using average of only sustained phase")
-
   #####################################
   #-------PARAMETER VALIDATION--------#
 
