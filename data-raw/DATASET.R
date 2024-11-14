@@ -65,12 +65,9 @@ usethis::use_data(female_MR1, female_MR2, female_MR2_noshifter,
 
 #Save batch fc83 females as an example dataset
 
-fc83 <- openxlsx::read.xlsx("../Phenotyping-Project/data_tables/fc83_f.xlsx")
-fc83 <- fc83[,7:43]
-colnames(fc83) <- fc83[1,]
-fc83 <- fc83[-1,]
+fc83 <- openxlsx::read.xlsx("../Phenotyping-Project/data_tables/fc83_f.xlsx", sheet = "retrieval1")
 rownames(fc83) <- fc83$id
-fc83 <- fc83[,1:36]
+fc83 <- fc83[,4:39]
 
 freezingDataset <- fc83
 usethis::use_data(freezingDataset, overwrite = TRUE)
