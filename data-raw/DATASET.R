@@ -62,3 +62,15 @@ male_MR2_noshifter <- e1071::svm(class~., data = m_MR2_noshifter[,3:6], kernel =
 usethis::use_data(female_MR1, female_MR2, female_MR2_noshifter,
                   male_MR1, male_MR2, male_MR2_noshifter,
                   internal = TRUE, overwrite = TRUE)
+
+#Save batch fc83 females as an example dataset
+
+fc83 <- openxlsx::read.xlsx("../Phenotyping-Project/data_tables/fc83_f.xlsx")
+fc83 <- fc83[,7:43]
+colnames(fc83) <- fc83[1,]
+fc83 <- fc83[-1,]
+rownames(fc83) <- fc83$id
+fc83 <- fc83[,1:36]
+
+freezingDataset <- fc83
+usethis::use_data(freezingDataset, overwrite = TRUE)
