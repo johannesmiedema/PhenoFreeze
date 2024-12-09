@@ -71,3 +71,13 @@ fc83 <- fc83[,4:39]
 
 freezingDataset <- fc83
 usethis::use_data(freezingDataset, overwrite = TRUE)
+
+#Save used training datasets for retraining model functionality without shifters
+training.f.MR1 <- f_MR1
+training.f.MR2 <- f_MR2_noshifter
+training.m.MR1 <- m_MR1
+training.m.MR2 <- m_MR2_noshifter
+
+#Save the training datasets internally to sys-data to be lazy loaded later on
+usethis::use_data(training.f.MR1, training.f.MR2, training.m.MR1, training.m.MR2,
+                  internal = TRUE, overwrite = TRUE)
