@@ -4,7 +4,15 @@
 \alias{classify_freezer}
 \title{Classification of phasic and sustained freezers}
 \usage{
-classify_freezer(data_MR1, data_MR2, sex, MR, shifter)
+classify_freezer(
+  data_MR1,
+  data_MR2,
+  sex,
+  MR,
+  shifter,
+  model = NULL,
+  data = NULL
+)
 }
 \arguments{
 \item{data_MR1}{dataframe containing freezing values MR1 of bins 13 - 24 as a character}
@@ -16,6 +24,10 @@ classify_freezer(data_MR1, data_MR2, sex, MR, shifter)
 \item{MR}{1 or 2 specifying the Memory Retrieval Session 1 or 2}
 
 \item{shifter}{boolean argument specifying if shifters should be included in prediction}
+
+\item{model}{string which specifies the path of a retrained .RDS models}
+
+\item{data}{dataframe containing freezing values for classification with a retrained model}
 }
 \description{
 Classification of phasic and sustained freezers
