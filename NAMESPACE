@@ -2,6 +2,10 @@
 
 export(classify_freezer)
 export(retrain_model)
+import(MASS)
+import(caret)
 import(e1071)
 import(mclust)
+import(pROC)
 import(randomForest)
+import(reshape2)
