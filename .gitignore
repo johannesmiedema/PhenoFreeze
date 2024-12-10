@@ -6,3 +6,5 @@
 .quarto
 images/*.png
 inst/doc
+/doc/
+/Meta/

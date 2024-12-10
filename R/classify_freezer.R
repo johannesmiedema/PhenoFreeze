@@ -275,7 +275,7 @@ classify_freezer <- function(data_MR1, data_MR2, sex, MR, shifter=FALSE, model =
       phenotypes <- stats::predict(retrained.model, newdata = params_retrained)
 
       #If LDA model was used obtain results further with $class
-      if(class(retrained.model) == "lda"){phenotypes <- phenotypes$class}
+      if(length(class(retrained.model)) == 1){phenotypes <- phenotypes$class}
 
       #Check if the output is not from GLM model, if yes, it needs to be changed
 
