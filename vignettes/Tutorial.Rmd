@@ -29,7 +29,9 @@ devtools::install_github("johannesmiedema/PhenoFreeze")
 ```
 
 ## Classification 
-For classification of sustained and phasic freezers, a dataframe must be provided, where each row represents the freezing values of an individual animals during CS exposure. To demonstrate this, a example dataset can be loaded. As seen below, inspecting the dataframe shows that there are 36 columns in that dataframe. However, the tone was only played during bins 13 to 24. Therefore, the dataframe must be subsetted to contain only columns 13:24:\
+For classification of sustained and phasic freezers, a dataframe must be provided, where each row represents the freezing values of an individual animals during CS exposure. To demonstrate this, a example dataset can be loaded. As seen below, inspecting the dataframe shows that there are 36 columns in that dataframe. However, the tone was only played during bins 13 to 24. Therefore, the dataframe must be subsetted to contain only columns 13:24:
+
+$~$
 
 ```
 library(PhenoFreeze)
@@ -38,8 +40,11 @@ mydata <- PhenoFreeze::freezingDataset
 head(mydata)
 ```
 
+$~$
 
- As seen below, inspecting the dataframe shows that there are 36 columns in that dataframe. However, the tone was only played during bins 13 to 24. Therefore, the dataframe must be subsetted to contain only columns 13:24:\
+Inspecting the dataframe shows that there are 36 columns in that dataframe. However, the tone was only played during bins 13 to 24. Therefore, the dataframe must be subsetted to contain only columns 13:24:
+ 
+$~$
  
  
 ```
@@ -47,62 +52,93 @@ mydata_subsetted <- mydata[,13:24]
 head(mydata_subsetted)
 ```
 
+$~$
 
-This dataframe can now be used for classification. The loaded dataset was obtained from female animals during MR session 1. These parameters need to be specified to select the correct model for classification:\
+This dataframe can now be used for classification. The loaded dataset was obtained from female animals during MR session 1. These parameters need to be specified to select the correct model for classification:
+
+$~$
 
 
 ```
 myclassification <- PhenoFreeze::classify_freezer(data_MR1 = mydata_subsetted, sex = "female", MR = 1)
 head(myclassification)
 ```
+$~$
 
-The resulting object is a vector, which represents the classified phenotype of each animal in the same order as provided by the rows in the dataframe. For classification with male animals or different MR sessions, the parameters of the functions must be specified accordingly. For MR2 classification, the dataframe needs to be specified under the data_MR2 variable:\
+The resulting object is a vector, which represents the classified phenotype of each animal in the same order as provided by the rows in the dataframe. For classification with male animals or different MR sessions, the parameters of the functions must be specified accordingly. For MR2 classification, the dataframe needs to be specified under the data_MR2 variable:
+
+$~$
 
 ```
 myclassification_MR2 <- PhenoFreeze::classify_freezer(data_MR2 = mydata_subsetted, sex = "female", MR = 2)
 
 ```
+$~$
 
 ## Retraining PhenoFreeze
 
-Apart from classification with pre-trained models, it is also possible to retrain the existing models by adding new data. To use the retrain_model function, the user must have ggplot2 installed, as this function will also produce plots for evaluation of the trained models. Due to the small sizes of the data sets, Monte-Carlo Cross-Validation is used to assess the performance of the used models. Per default, the number of iterations is 1000, but can be changed with the training_iterations parameter within the function call. As an example in this tutorial, the loaded dataset from female animals will be added to the male MR1 training data for demonstration purposes:\
+Apart from classification with pre-trained models, it is also possible to retrain the existing models by adding new data. To use the retrain_model function, the user must have ggplot2 installed and loaded, as this function will also produce plots for evaluation of the trained models. Due to the small sizes of the data sets, Monte-Carlo Cross-Validation is used to assess the performance of the used models. Per default, the number of iterations is 1000, but can be changed with the training_iterations parameter within the function call. As an example in this tutorial, the loaded dataset from female animals will be added to the male MR1 training data for demonstration purposes:
+
+$~$
 
 ```
+#ggplot2 needs to be loaded
+library(ggplot2)
+
+
+#Retrain male MR1 models by using the data obtained from the example dataset
 retrainingresults <- PhenoFreeze::retrain_model(new_data = mydata_subsetted, sex = "male", MR = 1)
 
 ```
+$~$
 
-The resulting object can be used to assess the metric plots, metric tables and the trained models themself. For example, to investigate the plot for the accuracy metric:\
+The resulting object can be used to assess the metric plots, metric tables and the trained models themself. For example, to investigate the plot for the accuracy metric:
+
+$~$
 
 
 ```
+#Obtain Accuracy plot
 Accuracy <- retrainingresults$Accuracy
+
+#Show the Accuracy plot
 Accuracy
 
 ```
+$~$
 
-This can be done accordingly for Specificity, Sensitivity, F1 and Auroc. The plots can be accessed accordingly with the dollar operator of the resulting object of the retrain_model() function. The metrics can also be viewed as a dataframe which shows the mean and +/- standard deviation. This can be done accordingly:\
+This can be done accordingly for Specificity, Sensitivity, F1 and Auroc. The plots can be accessed accordingly with the dollar operator of the resulting object of the retrain_model() function. The metrics can also be viewed as a dataframe which shows the mean and +/- standard deviation. This can be done accordingly:
+
+$~$
 
 ```
+#Obtain model performance metrics as a dataframe
 Stats <- retrainingresults$Stats
 Stats
 
 ```
 
-After investigating all metrics, the user can save the best-performing model as an RDS object. First, the model needs to assigned to a new variable. For example, we will save the radial SVM model (RSVM) in this tutorial:\
+After investigating all metrics, the user can save the best-performing model as an RDS object. First, the model needs to assigned to a new variable. For example, we will save the radial SVM model (RSVM) in this tutorial. The other models can be accessed via the dollar operator by specifing "SVM" for the SVM with a linear kernel, "RF" for random forest, "Logistic" for the logistic regression model, and "LDA" for linear discriminant analysis.
+
+$~$
 
 ```
 mymodel <- retrainingresults$RSVM
 
 #Save as RDS object: the second parameter specifies the name of the saved object and the path 
-saveRDS(mymodel, "mymodel.RDS)
+saveRDS(mymodel, "mymodel.RDS")
+
+```
+$~$
+
+After saving the retrained model as an RDS object, this model can now be used for custom classification using the classify_freezer() function. For this, the model name and path of the saved RDS object needs to be specified, as well as the data for custom classification, which needs to be specified under the data variable. The other parameters shown before, like sex and MR are not needed in this step:
+
+$~$
+
+
+```
+newclassification <- PhenoFreeze::classify_freezer(model = "mymodel.RDS", data = mydata_subsetted)
 
 ```
 
-After saving the retrained model as an RDS object, this model can now be used for custom classification using the classify_freezer() function. For this, the model name and path of the saved RDS object needs to be specified, as well as the data for custom classification, which needs to be specifed under the data variable. The other parameters shown before, like sex, MR, are not needed in this step:
-
-```
-newclassification <- PhenoFreeze::classify_freezer(model = "mymodel.RDS", data = new_data)
-
-```
-
+## References
