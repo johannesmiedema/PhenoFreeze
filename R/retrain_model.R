@@ -54,10 +54,10 @@ retrain_model <- function(new_data, sex, MR, training_iterations = 1000){
   #####################################
   #Combine existing training-dataset with new data
 
-  if(sex == "female" && MR == 1){old_data = training.f.MR1}
-  if(sex == "female" && MR == 2){old_data = training.f.MR2}
-  if(sex == "male" && MR == 1){old_data = training.m.MR1}
-  if(sex == "male" && MR == 2){old_data = training.m.MR2}
+  if(sex == "female" && MR == 1){old_data = PhenoFreeze:::training.f.MR1}
+  if(sex == "female" && MR == 2){old_data = PhenoFreeze:::training.f.MR2}
+  if(sex == "male" && MR == 1){old_data = PhenoFreeze:::training.m.MR1}
+  if(sex == "male" && MR == 2){old_data = PhenoFreeze:::training.m.MR2}
 
   #Reformat previous training data parameters for merging with new data
   old_data <- old_data[,3:5]

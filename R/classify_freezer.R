@@ -13,7 +13,8 @@
 #' @export classify_freezer
 #' @export
 
-classify_freezer <- function(data_MR1, data_MR2, sex, MR, shifter, model = NULL, data = NULL){
+classify_freezer <- function(data_MR1, data_MR2, sex, MR, shifter=FALSE, model = NULL, data = NULL){
+
 
   #Use standarad PhenoFreeze models if no retrained model is provided
   if (is.null(model)){
@@ -122,7 +123,7 @@ classify_freezer <- function(data_MR1, data_MR2, sex, MR, shifter, model = NULL,
       #Predict MR1 Phenotype of females
       if (sex == "female" & MR == 1){
         message("Predicting female MR1 Phenotypes using MR1 freezing data")
-        phenotypes <- stats::predict(female_MR1, newdata = params_MR1)
+        phenotypes <- stats::predict(PhenoFreeze:::female_MR1, newdata = params_MR1)
         #Transform values as the model is a glm model
         phenotypes <- ifelse(phenotypes>=0.5, "sustained", "phasic")
         phenotypes <- factor(phenotypes, levels = c("sustained", "phasic"))
@@ -130,7 +131,7 @@ classify_freezer <- function(data_MR1, data_MR2, sex, MR, shifter, model = NULL,
       #Predict MR1 Phenotype of males
       if (sex == "male" & MR == 1){
         message("Predicting male MR1 Phenotypes using MR1 freezing data")
-        phenotypes <- stats::predict(male_MR1, newdata = params_MR1)
+        phenotypes <- stats::predict(PhenoFreeze:::male_MR1, newdata = params_MR1)
       }
       if (length(phenotypes) == nrow(data_MR1)){
         message("MR1 classification successfull")
@@ -180,12 +181,12 @@ classify_freezer <- function(data_MR1, data_MR2, sex, MR, shifter, model = NULL,
       #Predict MR2 Phenotypes of females
       if (sex == "female"){
         message("Predicting female MR2 Phenotypes including shifters using MR1 and MR2 freezing data")
-        phenotypes <- stats::predict(female_MR2, newdata = params_merged)
+        phenotypes <- stats::predict(PhenoFreeze:::female_MR2, newdata = params_merged)
       }
       #Predict MR2 Phenotypes of males
       if (sex == "male"){
         message("Predicting male MR2 Phenotypes including shifters using MR1 and MR2 freezing data")
-        phenotypes <- stats::predict(male_MR2, newdata = params_merged)
+        phenotypes <- stats::predict(PhenoFreeze:::male_MR2, newdata = params_merged)
       }
       if (length(phenotypes) == nrow(data_MR2)){
         message("MR2 classification successfull")
@@ -201,7 +202,7 @@ classify_freezer <- function(data_MR1, data_MR2, sex, MR, shifter, model = NULL,
       #Predict MR2 Phenotypes of females
       if (sex == "female"){
         message("Predicting female MR2 Phenotypes without shifters using MR2 freezing data")
-        phenotypes <- stats::predict(female_MR2_noshifter, newdata = params_MR2)
+        phenotypes <- stats::predict(PhenoFreeze:::female_MR2_noshifter, newdata = params_MR2)
         #Transform values as the model is a glm model
         phenotypes <- ifelse(phenotypes >= 0.5, "sustained", "phasic")
         phenotypes <- factor(phenotypes, levels = c("sustained", "phasic"))
@@ -209,7 +210,7 @@ classify_freezer <- function(data_MR1, data_MR2, sex, MR, shifter, model = NULL,
       #Predict MR2 Phenotypes of males
       if (sex == "male"){
         message("Predicting male MR2 Phenotypes without shifters using MR2 freezing data")
-        phenotypes <- stats::predict(male_MR2_noshifter, newdata = params_MR2)
+        phenotypes <- stats::predict(PhenoFreeze:::male_MR2_noshifter, newdata = params_MR2)
       }
       if (length(phenotypes) == nrow(data_MR2)){
         message("MR2 classification successfull")

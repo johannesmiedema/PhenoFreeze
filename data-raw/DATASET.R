@@ -58,10 +58,7 @@ male_MR1 <- randomForest::randomForest(class~., data = m_MR1[,3:6])
 male_MR2 <- randomForest::randomForest(class~., data =m_MR2)
 male_MR2_noshifter <- e1071::svm(class~., data = m_MR2_noshifter[,3:6], kernel = "linear")
 
-#Save the models internally to sys-data to be lazy loaded later on
-usethis::use_data(female_MR1, female_MR2, female_MR2_noshifter,
-                  male_MR1, male_MR2, male_MR2_noshifter,
-                  internal = TRUE, overwrite = TRUE)
+
 
 #Save batch fc83 females as an example dataset
 
@@ -78,6 +75,7 @@ training.f.MR2 <- f_MR2_noshifter
 training.m.MR1 <- m_MR1
 training.m.MR2 <- m_MR2_noshifter
 
-#Save the training datasets internally to sys-data to be lazy loaded later on
-usethis::use_data(training.f.MR1, training.f.MR2, training.m.MR1, training.m.MR2,
-                  internal = TRUE, overwrite = TRUE)
+#Save data internally to sys-data to be lazy loaded later on
+usethis::use_data(female_MR1, female_MR2, female_MR2_noshifter,
+                  male_MR1, male_MR2, male_MR2_noshifter, training.f.MR1, training.f.MR2, training.m.MR1, training.m.MR2,
+                 internal = TRUE, overwrite = TRUE)

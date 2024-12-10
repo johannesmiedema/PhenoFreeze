@@ -9,7 +9,7 @@ classify_freezer(
   data_MR2,
   sex,
   MR,
-  shifter,
+  shifter = FALSE,
   model = NULL,
   data = NULL
 )
