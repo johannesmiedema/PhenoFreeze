@@ -18,7 +18,7 @@ devtools::install_github("johannesmiedema/PhenoFreeze")
 ```
 
 ## Usage 
-Using PhenoFreeze is explained in detail in the vignette, which can be found here, or after installing the package by using the command b
+Using PhenoFreeze is explained in detail in the vignette, which can be found here: https://johannesmiedema.github.io/PhenoFreezeDoc/ 
 
 ## References 
 [1] Kovlyagina I, Wierczeiko A, Todorov H, Jacobi E, Tevosian M, et al. (2024) Leveraging interindividual variability in threat conditioning of inbred mice to model trait anxiety. PLOS Biology 22(5): e3002642. https://doi.org/10.1371/journal.pbio.3002642
